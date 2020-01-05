@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-fade-transition></v-fade-transition>
-    <v-content>
+    <v-content class="mx-0 px-0 my-0 py-0">
       <router-view></router-view>
     </v-content>
   </v-app>
@@ -12,8 +12,14 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'App',
   components: { },
-  data: () => ({
-    //
-  }),
+  data: function () {
+    return {
+    }
+  },
+  methods: {
+    isNotLogin() {
+      return false
+    }
+  }
 });
 </script>

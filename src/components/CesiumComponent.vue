@@ -1,21 +1,34 @@
 <template>
-    <v-container>
-        <div id="cesiumContainer"></div>
-    </v-container>
+    <div style="width: 100vw; height:100vh" id="cesiumContainer"></div>
 </template>
 
 <script>
-import Cesium from 'cesium/Cesium'
+import 'cesium/Widgets/widgets.css'
+// import { Cesium } from 'cesium/Cesium'
+var Cesium = require('cesium/Cesium')
+// import { Observable } from 'rxjs'
 export default {
-  data () {
+  data: function () {
       return {
-          viewer:{},
+          viewer: {},
       }
   },
   mounted() {
-      console.log(Cesium)
-      var viewer = new cesium.Viewer('cesiumContainer')
-      this.viewer = viewer
+    var viewer = new Cesium.Viewer('cesiumContainer', {
+        animation: false,
+        fullscreenButton: false,
+        baseLayerPicker: false,
+        geocoder: false,
+        infoBox: false,
+        timeline: false,
+        navigationHelpButton: false,
+        navigationInstructionsInitiallyVisible: false,
+        scene3DOnly: true,
+        homeButton: false,
+        shadows: true
+    })
+    this.viewer = viewer
   }
 }
 </script>
+
