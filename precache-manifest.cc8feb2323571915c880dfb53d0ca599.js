@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7efa40d7b6b7f747702d",
+    "revision": "f712e30a421417533aa8",
     "url": "/event-framework/app.bundle.js"
   },
   {
@@ -8,15 +8,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/event-framework/css/Cesium.d75e4e7a.css"
   },
   {
-    "revision": "fafc2723c1f84989c799",
+    "revision": "06004207e416e8924ff9",
     "url": "/event-framework/css/chunk-vendors.8ce4d904.css"
   },
   {
-    "revision": "9b6b26f9e1c19c7f4caa",
+    "revision": "42f9606a89b3d4409ec8",
     "url": "/event-framework/css/spa.e2d9b03a.css"
   },
   {
-    "revision": "0b16c77680ee3627aa710c086fbcdf3b",
+    "revision": "71ea98f7ad62dcaf1cf44505a6a56071",
     "url": "/event-framework/index.html"
   },
   {
@@ -24,12 +24,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/event-framework/js/Cesium.1076eace.js"
   },
   {
-    "revision": "fafc2723c1f84989c799",
-    "url": "/event-framework/js/chunk-vendors.78ea4aed.js"
+    "revision": "06004207e416e8924ff9",
+    "url": "/event-framework/js/chunk-vendors.66da8271.js"
   },
   {
-    "revision": "9b6b26f9e1c19c7f4caa",
-    "url": "/event-framework/js/spa.e2d7bf10.js"
+    "revision": "42f9606a89b3d4409ec8",
+    "url": "/event-framework/js/spa.80c69f7e.js"
   },
   {
     "revision": "803ebc3793a92b2890eea1a970ac47e6",
