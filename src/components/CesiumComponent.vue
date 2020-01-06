@@ -6,7 +6,7 @@
 import 'cesium/Widgets/widgets.css'
 // import { Cesium } from 'cesium/Cesium'
 var Cesium = require('cesium/Cesium')
-// import { Observable } from 'rxjs'
+import { Observable } from 'rxjs'
 export default {
   data: function () {
       return {
