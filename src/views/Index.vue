@@ -14,7 +14,7 @@
             <v-list-item-title>Dashboard</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link @click="sendMessage()">
           <v-list-item-action>
             <v-icon>settings</v-icon>
           </v-list-item-action>
@@ -31,7 +31,9 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
-    <CesiumComponent style ="display:inline-block;"/>
+    <keep-alive>
+      <CesiumComponent style ="display:inline-block;"/>
+    </keep-alive>
     <v-footer app>
       <span>&copy; 2019</span>
     </v-footer>
@@ -39,6 +41,7 @@
 </template>
 
 <script>
+import { messageService } from '@/services'
 import CesiumComponent from '@/components/CesiumComponent'
   export default {
     components: { CesiumComponent },
@@ -48,6 +51,16 @@ import CesiumComponent from '@/components/CesiumComponent'
     data: () => ({
       drawer: null,
     }),
+    methods: {
+      sendMessage() {
+          // send message to subscribers via observable subject
+          messageService.sendMessage('Message from Home Page Component to App Component!');
+      },
+      clearMessages() {
+          // clear messages
+          messageService.clearMessages();
+      }
+    },
     created () {
       this.$vuetify.theme.dark = true
     },

@@ -6,15 +6,35 @@
 import 'cesium/Widgets/widgets.css'
 // import { Cesium } from 'cesium/Cesium'
 var Cesium = require('cesium/Cesium')
-import { Observable } from 'rxjs'
+import { messageService } from '@/services'
+
 export default {
   data: function () {
       return {
           viewer: {},
+          messages: [],
       }
   },
+  methods: {
+    logMessage() {
+      console.log("this is a message")
+    }
+  },
+  created () {
+      // subscribe to home component messages
+      this.subscription = messageService.getMessage().subscribe(message => {
+          if (message) {
+            this.logMessage();
+            // add message to local state if not empty
+            this.messages.push(message);
+          } else {
+              // clear messages when empty message received
+              this.messages = [];
+          }
+      });
+  },
   mounted() {
-    var viewer = new Cesium.Viewer('cesiumContainer', {
+    const viewer = new Cesium.Viewer('cesiumContainer', {
         animation: false,
         fullscreenButton: false,
         baseLayerPicker: false,
@@ -28,6 +48,10 @@ export default {
         shadows: true
     })
     this.viewer = viewer
+  },
+  beforeDestroy () {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
   }
 }
 </script>

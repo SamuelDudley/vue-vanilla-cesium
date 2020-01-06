@@ -32,7 +32,8 @@ router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
   const publicPages = ["/login"] // add more paths to this array
   const authRequired = !publicPages.includes(to.path);
-  const loggedIn = true // localStorage.getItem('user');
+  const loggedIn = localStorage.getItem('vuex');
+  console.log(loggedIn)
 
   if (authRequired && !loggedIn) {
     return next('/login');
