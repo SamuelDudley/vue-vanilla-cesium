@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/vue-cesium/precache-manifest.88ffca0052dfb4706ecf06abc852c9af.js"
+  "/vue-vanilla-cesium/precache-manifest.3bdd27eed8dea84d8404c82ece26e7c9.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "vue-cesium"});
+workbox.core.setCacheNameDetails({prefix: "vue-vanilla-cesium"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
