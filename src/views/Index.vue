@@ -6,21 +6,18 @@
       clipped
     >
       <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>dashboard</v-icon>
-          </v-list-item-action>
+        <v-list-item v-for="(waypoint, index) in waypoints" :key="index">
           <v-list-item-content>
-            <v-list-item-title>Dashboard</v-list-item-title>
+            <v-list-item-title v-text="waypoint.latitude + ', ' + waypoint.longitude"></v-list-item-title>
+            <v-list-item-subtitle v-text="waypoint.id"></v-list-item-subtitle>
           </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="sendMessage()">
+
           <v-list-item-action>
-            <v-icon>settings</v-icon>
+            <!-- // eslint vue/valid-v-on -->
+            <v-btn @click="deleteWaypoint(waypoint.id)" icon>
+              <v-icon color="grey lighten-1">delete_forever</v-icon>
+            </v-btn>
           </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Settings</v-list-item-title>
-          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -35,30 +32,25 @@
       <CesiumComponent style ="display:inline-block;"/>
     </keep-alive>
     <v-footer app>
-      <span>&copy; 2019</span>
+      <span>&copy; 2020</span>
     </v-footer>
   </v-container>
 </template>
 
 <script>
-import { messageService } from '@/services'
+import { mapGetters } from 'vuex'
 import CesiumComponent from '@/components/CesiumComponent'
   export default {
     components: { CesiumComponent },
-    props: {
-      source: String,
-    },
     data: () => ({
       drawer: null,
     }),
+    computed: {
+      ...mapGetters('mission-UUID', ['waypoints'])
+    },
     methods: {
-      sendMessage() {
-          // send message to subscribers via observable subject
-          messageService.sendMessage('Message from Home Page Component to App Component!');
-      },
-      clearMessages() {
-          // clear messages
-          messageService.clearMessages();
+      deleteWaypoint: function(waypointId) {
+        this.$store.commit('mission-UUID/removeWaypointById', waypointId)
       }
     },
     created () {

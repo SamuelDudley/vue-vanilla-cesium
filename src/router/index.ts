@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
 import Index from '@/views/Index.vue'
 
 Vue.use(VueRouter)
@@ -31,11 +32,13 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
   const publicPages = ["/login"] // add more paths to this array
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('vuex');
-  console.log(loggedIn)
+  const authRequired = !publicPages.includes(to.path)
+  // console.log(store.getters.bearer)
+  const isLoggedIn = store.getters.bearer
+  // eslint-disable-next-line no-console
+  console.log(isLoggedIn)
 
-  if (authRequired && !loggedIn) {
+  if (authRequired && !isLoggedIn) {
     return next('/login');
   }
 

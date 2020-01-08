@@ -9,6 +9,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopywebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   "transpileDependencies": [

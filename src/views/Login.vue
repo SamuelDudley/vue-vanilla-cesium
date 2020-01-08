@@ -24,6 +24,7 @@
             <v-card-text>
               <v-form>
                 <v-text-field
+                  v-model="user"
                   label="Login"
                   name="login"
                   prepend-icon="person"
@@ -31,7 +32,7 @@
                 />
 
                 <v-text-field
-                  id="password"
+                  v-model="password"
                   label="Password"
                   name="password"
                   prepend-icon="lock"
@@ -53,13 +54,9 @@
 export default {
   data: function () {
     return {
-      email : "",
+      user : "",
       password : ""
     }
-  },
-
-  props: {
-    source: String,
   },
 
   created () {
@@ -68,12 +65,15 @@ export default {
 
   methods: {
     login: function () {
+      // eslint-disable-next-line no-console
       console.log("login attempted...")
-      let email = this.email 
+      let user = this.user 
       let password = this.password
+      // make call to auth server and return jwt
       this.$store.dispatch('bearer', password ) // replace with this.response.access_token jwt from oauth server
       .then(() => this.$router.push('/'))
-      // .catch(err => console.log(err))
+      // eslint-disable-next-line no-console
+      .catch(err => console.log(err))
     }
   }
 }
