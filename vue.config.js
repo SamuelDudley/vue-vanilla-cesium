@@ -8,14 +8,13 @@ const cesiumWorkers = process.env.NODE_ENV === 'production'
 const path = require('path')
 const webpack = require('webpack')
 const CopywebpackPlugin = require('copy-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/event-framework'
+    ? '/vue-cesium'
     : '/',
 
   "configureWebpack": {
