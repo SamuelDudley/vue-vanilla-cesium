@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/css/spa.e2d9b03a.css"
   },
   {
-    "revision": "488757eaedfae6ab7d05bb10d34ac7c0",
+    "revision": "14283a3e04d51b4d35534fbd448b0d33",
     "url": "/vue-vanilla-cesium/index.html"
   },
   {
