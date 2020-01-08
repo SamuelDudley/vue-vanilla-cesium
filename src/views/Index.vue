@@ -8,7 +8,7 @@
       <v-list dense>
         <v-list-item v-for="(waypoint, index) in waypoints" :key="index">
           <v-list-item-content>
-            <v-list-item-title v-text="waypoint.latitude + ', ' + waypoint.longitude"></v-list-item-title>
+            <v-list-item-title v-text="waypoint.latitude.toFixed(6) + ', ' + waypoint.longitude.toFixed(6)"></v-list-item-title>
             <v-list-item-subtitle v-text="waypoint.id"></v-list-item-subtitle>
           </v-list-item-content>
 
@@ -46,11 +46,11 @@ import CesiumComponent from '@/components/CesiumComponent'
       drawer: null,
     }),
     computed: {
-      ...mapGetters('mission-UUID', ['waypoints'])
+      ...mapGetters('mission', ['waypoints'])
     },
     methods: {
       deleteWaypoint: function(waypointId) {
-        this.$store.commit('mission-UUID/removeWaypointById', waypointId)
+        this.$store.commit('mission/removeWaypointById', waypointId)
       }
     },
     created () {

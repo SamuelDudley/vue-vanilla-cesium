@@ -1,15 +1,14 @@
 'use strict'
 const cesiumSource = process.env.NODE_ENV === 'production'
   ? 'node_modules/cesium/Build/Cesium'
-  : 'node_modules/cesium/Source';
+  : 'node_modules/cesium/Source'
 const cesiumWorkers = process.env.NODE_ENV === 'production'
-? 'Workers'
-: '../Build/Cesium/Workers'; '../Build/Cesium/Workers';
-const path = require('path');
-const webpack = require('webpack');
-const CopywebpackPlugin = require('copy-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+  ? 'Workers'
+  : '../Build/Cesium/Workers'
+const path = require('path')
+const webpack = require('webpack')
+const CopywebpackPlugin = require('copy-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   "transpileDependencies": [
@@ -85,10 +84,6 @@ module.exports = {
       : 'eval',
 
     optimization: {
-      minimize: process.env.NODE_ENV === 'production'
-        ? true
-        : false,
-      minimizer: [new UglifyJsPlugin()],
       splitChunks: {
         cacheGroups: {
           vendors: {
@@ -104,6 +99,6 @@ module.exports = {
           }
         }
       }
-    },
+    }
   }
 }
