@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import { cesium, CesiumEvent, CesiumEventType } from '@/store/modules/cesium'
+
 import 'cesium/Widgets/widgets.css'
 var Cesium = require('cesium/Cesium')
 
@@ -72,7 +74,8 @@ export default {
     }
   },
   created () {
-      Cesium.BingMapsApi.defaultKey = 'Anbo9M1xfooZZAvpxP6qtbApJzMrvT_BtBAnJUDE-4fvRHfAzHH2APKQXI5oqH5C';
+    this.$store.registerModule('cesium', cesium)
+    Cesium.BingMapsApi.defaultKey = 'Anbo9M1xfooZZAvpxP6qtbApJzMrvT_BtBAnJUDE-4fvRHfAzHH2APKQXI5oqH5C';
   },
   mounted() {
     const viewer = new Cesium.Viewer('cesiumContainer', {
@@ -106,6 +109,25 @@ export default {
     this.registerMouseLeftClick()
     this.registerMouseDoubleLeftClick()
     this.mainScene.debugShowFramesPerSecond = process.env.NODE_ENV !== 'production' ? true : false
+
+    this.watcherEventUnwatch = this.$store.watch(
+      () => this.$store.getters['cesium/getEvent'], cesiumEvent => {
+        switch(cesiumEvent.eventType) {
+          case CesiumEventType.zoomToLocation: {
+            let cameraLocation = Cesium.Transforms.northEastDownToFixedFrame(
+              Cesium.Cartesian3.fromDegrees(
+                cesiumEvent.payload.latitude,
+                cesiumEvent.payload.longitude,
+                30000
+              )
+            )
+            let cameraOffset = new Cesium.Cartesian3(0, 0, 0)
+            this.setMainCamera(Cesium.Matrix4.multiplyByPoint(cameraLocation, cameraOffset, new Cesium.Cartesian3()), 0, -90, 0)
+            break
+          }
+        }
+      }
+    )
 
     this.watcherWaypointsUnwatch = this.$store.watch(
       () => this.$store.getters['mission/waypointLLAs'], newValue => {
@@ -142,6 +164,11 @@ export default {
 
     // Explicitly render a new frame
     this.mainScene.requestRender()
+  },
+  beforeDestroy() {
+    this.watcherWaypointsUnwatch()
+    this.watcherEventUnwatch()
+    this.$store.unregisterModule('cesium')
   }
 }
 </script>

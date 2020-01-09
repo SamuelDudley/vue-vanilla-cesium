@@ -14,7 +14,7 @@
 
           <v-list-item-action>
             <!-- // eslint vue/valid-v-on -->
-            <v-btn @click="deleteWaypoint(waypoint.id)" icon>
+            <v-btn @click="deleteWaypoint(waypoint)" icon>
               <v-icon color="grey lighten-1">delete_forever</v-icon>
             </v-btn>
           </v-list-item-action>
@@ -40,6 +40,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import CesiumComponent from '@/components/CesiumComponent'
+import { CesiumEvent, CesiumEventType } from '@/store/modules/cesium'
   export default {
     components: { CesiumComponent },
     data: () => ({
@@ -49,8 +50,17 @@ import CesiumComponent from '@/components/CesiumComponent'
       ...mapGetters('mission', ['waypoints'])
     },
     methods: {
-      deleteWaypoint: function(waypointId) {
-        this.$store.commit('mission/removeWaypointById', waypointId)
+      deleteWaypoint: function(waypoint) {
+        this.$store.commit('mission/removeWaypointById', waypoint.id)
+        /** @type CesiumEvent */
+        let cesiumEvent = {
+          eventType: CesiumEventType.zoomToLocation,
+          payload: {
+            latitude: waypoint.latitude,
+            longitude: waypoint.longitude
+          }
+        }
+        this.$store.commit('cesium/publishEvent', cesiumEvent)
       }
     },
     created () {

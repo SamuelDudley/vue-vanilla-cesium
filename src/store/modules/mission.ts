@@ -14,7 +14,6 @@ export const mission = {
     state: function() {
         // new state instance for each use of this module
         return {
-            counter: 100,
             waypoints: new Array<waypoints>()
         };
     },
@@ -23,7 +22,6 @@ export const mission = {
     },
    
     getters: {
-        counter: (state:any) => state.counter,
         waypoints: (state:any) => state.waypoints,
         waypointLLAs: (state:any) => {
             let LLAs = new Array<number>()
@@ -34,9 +32,6 @@ export const mission = {
         }
     },
     mutations: {
-        updateCounter(state:any, counter:number) {
-            state.counter = counter
-        },
         updateWaypoints(state:any, waypoints:Array<waypoints>) {
             state.waypoints = waypoints
         },
