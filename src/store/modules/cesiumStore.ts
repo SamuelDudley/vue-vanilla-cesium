@@ -19,7 +19,7 @@ class State {
     event: CesiumEvent | null = null
 }
 
-export const cesium = {
+export const cesiumStore = {
     namespaced: true,
     state: new State(),
     getters: {

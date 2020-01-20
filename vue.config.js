@@ -1,10 +1,9 @@
 'use strict'
-const cesiumSource = process.env.NODE_ENV === 'production'
-  ? 'node_modules/cesium/Build/Cesium'
-  : 'node_modules/cesium/Source'
-const cesiumWorkers = process.env.NODE_ENV === 'production'
-  ? 'Workers'
-  : '../Build/Cesium/Workers'
+const cesiumSource = 'node_modules/cesium/Source'
+const cesiumWorkers = '../Build/Cesium/Workers'
+const cesiumThirdParty = '../Build/Cesium/ThirdParty'
+const cesiumAssets = '../Build/Cesium/Assets'
+const cesiumWidgets = '../Build/Cesium/Widgets'
 const path = require('path')
 const webpack = require('webpack')
 const CopywebpackPlugin = require('copy-webpack-plugin')
@@ -27,29 +26,25 @@ module.exports = {
       sourcePrefix: '' 
     },
 
-    amd: {
-      // Enable webpack-friendly use of require in Cesium
-      toUrlUndefined: true
-    },
-
     node: {
         // Resolve node module use of fs
-        fs: 'empty'
+        fs: "empty",
+        Buffer: false,
+        http: "empty",
+        https: "empty",
+        zlib: "empty"
     },
 
     resolve: {
-      alias: {
-        // Cesium module name
-        cesium: path.resolve('./', cesiumSource)
-      }
+      mainFields: ['module', 'main']
     },
 
     plugins: [
       // Copy Cesium Assets, Widgets, and Workers to a static directory
       new CopywebpackPlugin([ { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' } ]),
-      new CopywebpackPlugin([ { from: path.join(cesiumSource, 'Assets'), to: 'Assets' } ]),
-      new CopywebpackPlugin([ { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' } ]),
-      new CopywebpackPlugin([ { from: path.join(cesiumSource, 'ThirdParty/Workers'), to: 'ThirdParty/Workers'} ]),
+      new CopywebpackPlugin([ { from: path.join(cesiumSource, cesiumAssets), to: 'Assets' } ]),
+      new CopywebpackPlugin([ { from: path.join(cesiumSource, cesiumWidgets), to: 'Widgets' } ]),
+      new CopywebpackPlugin([ { from: path.join(cesiumSource, cesiumThirdParty), to: 'ThirdParty'} ]),
       // Define relative base path in cesium for loading assets
       new webpack.DefinePlugin({ CESIUM_BASE_URL: JSON.stringify('') })
     ],
@@ -66,6 +61,7 @@ module.exports = {
           test: /\.js$/,
           enforce: 'pre',
           include: path.resolve(__dirname, cesiumSource),
+          sideEffects: false,
           use: [{
               loader: 'strip-pragma-loader',
               options: {
@@ -79,11 +75,14 @@ module.exports = {
     },
 
     devtool: process.env.NODE_ENV === 'production'
-      ? 'nosources-source-map'
+      ? false
       : 'eval',
 
     optimization: {
+      usedExports: true,
       splitChunks: {
+        minSize: 10000,
+        maxSize: 250000,
         cacheGroups: {
           vendors: {
             name: `chunk-vendors`,

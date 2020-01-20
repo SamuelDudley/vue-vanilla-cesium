@@ -3,10 +3,12 @@
 </template>
 
 <script>
-import { cesium, CesiumEvent, CesiumEventType } from '@/store/modules/cesium'
+import { cesiumStore, CesiumEvent, CesiumEventType } from '@/store/modules/cesiumStore'
 
-import 'cesium/Widgets/widgets.css'
-var Cesium = require('cesium/Cesium')
+import 'cesium/Build/Cesium/Widgets/widgets.css'
+import { BingMapsApi, ScreenSpaceEventType, Cartographic, ScreenSpaceEventHandler, Viewer} from "cesium"
+import { Math, BingMapsImageryProvider, createWorldTerrain, Cartesian3, Matrix4, Transforms } from "cesium"
+import { PolylineCollection, Color, Material } from "cesium"
 
 export default {
   data: function () {
@@ -26,32 +28,32 @@ export default {
     },
 
     registerMouseMovement() {
-      this.mouseMovementHandler = new Cesium.ScreenSpaceEventHandler(this.mainScene.canvas)
+      this.mouseMovementHandler = new ScreenSpaceEventHandler(this.mainScene.canvas)
       this.mouseMovementHandler.setInputAction((movement) => {
         const cartesian = this.mainViewer.camera.pickEllipsoid(movement.endPosition, this.mainScene.globe.ellipsoid)
         if (cartesian) {
-          const cartographic = Cesium.Cartographic.fromCartesian(cartesian)
+          const cartographic = Cartographic.fromCartesian(cartesian)
           this.mousePosition = {
-            latitude: Cesium.Math.toDegrees(cartographic.longitude),
-            longitude: Cesium.Math.toDegrees(cartographic.latitude)
+            latitude: Math.toDegrees(cartographic.longitude),
+            longitude: Math.toDegrees(cartographic.latitude)
           }
         } else {
           this.mousePosition = undefined
         }
-      }, Cesium.ScreenSpaceEventType.MOUSE_MOVE)
+      }, ScreenSpaceEventType.MOUSE_MOVE)
     },
 
     registerMouseDoubleLeftClick() {
-      this.mouseDoubleLeftClickHandler = new Cesium.ScreenSpaceEventHandler(this.mainScene.canvas)
+      this.mouseDoubleLeftClickHandler = new ScreenSpaceEventHandler(this.mainScene.canvas)
       // eslint-disable-next-line no-unused-vars
       this.mouseDoubleLeftClickHandler.setInputAction((e) => {
         // Disable the default dbl click to track entity for the viewer
         this.mainViewer.trackedEntity = undefined;
-      }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK)
+      }, ScreenSpaceEventType.LEFT_DOUBLE_CLICK)
     },
 
     registerMouseLeftClick() {
-      this.mouseLeftClickHandler = new Cesium.ScreenSpaceEventHandler(this.mainScene.canvas)
+      this.mouseLeftClickHandler = new ScreenSpaceEventHandler(this.mainScene.canvas)
       // eslint-disable-next-line no-unused-vars
       this.mouseLeftClickHandler.setInputAction((event) => {
         if (this.mousePosition) {
@@ -59,30 +61,30 @@ export default {
           waypoint.id = (+new Date).toString(36).slice(-5)
           this.$store.commit('mission/appendWaypoint', waypoint)
         }
-      }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
+      }, ScreenSpaceEventType.LEFT_CLICK)
     },
 
     setMainCamera(location, heading = 0, pitch = -45, roll = 0) {
       this.mainCamera.setView({
       destination: location,
       orientation: {
-        heading: Cesium.Math.toRadians(heading),
-        pitch: Cesium.Math.toRadians(pitch),
-        roll: Cesium.Math.toRadians(roll),
+        heading: Math.toRadians(heading),
+        pitch: Math.toRadians(pitch),
+        roll: Math.toRadians(roll),
         },
       })
     }
   },
   created () {
-    this.$store.registerModule('cesium', cesium)
-    Cesium.BingMapsApi.defaultKey = 'Anbo9M1xfooZZAvpxP6qtbApJzMrvT_BtBAnJUDE-4fvRHfAzHH2APKQXI5oqH5C';
+    this.$store.registerModule('cesiumStore', cesiumStore)
+    BingMapsApi.defaultKey = 'Anbo9M1xfooZZAvpxP6qtbApJzMrvT_BtBAnJUDE-4fvRHfAzHH2APKQXI5oqH5C';
   },
   mounted() {
-    const viewer = new Cesium.Viewer('cesiumContainer', {
-      imageryProvider: new Cesium.BingMapsImageryProvider({
+    const viewer = new Viewer('cesiumContainer', {
+      imageryProvider: new BingMapsImageryProvider({
         url: 'https://dev.virtualearth.net',
       }),
-      terrainProvider : new Cesium.createWorldTerrain({
+      terrainProvider : new createWorldTerrain({
         requestWaterMask : true,
         requestVertexNormals : true
       }),
@@ -111,18 +113,18 @@ export default {
     this.mainScene.debugShowFramesPerSecond = process.env.NODE_ENV !== 'production' ? true : false
 
     this.watcherEventUnwatch = this.$store.watch(
-      () => this.$store.getters['cesium/getEvent'], cesiumEvent => {
+      () => this.$store.getters['cesiumStore/getEvent'], cesiumEvent => {
         switch(cesiumEvent.eventType) {
           case CesiumEventType.zoomToLocation: {
-            let cameraLocation = Cesium.Transforms.northEastDownToFixedFrame(
-              Cesium.Cartesian3.fromDegrees(
+            let cameraLocation = Transforms.northEastDownToFixedFrame(
+              Cartesian3.fromDegrees(
                 cesiumEvent.payload.latitude,
                 cesiumEvent.payload.longitude,
                 30000
               )
             )
-            let cameraOffset = new Cesium.Cartesian3(0, 0, 0)
-            this.setMainCamera(Cesium.Matrix4.multiplyByPoint(cameraLocation, cameraOffset, new Cesium.Cartesian3()), 0, -90, 0)
+            let cameraOffset = new Cartesian3(0, 0, 0)
+            this.setMainCamera(Matrix4.multiplyByPoint(cameraLocation, cameraOffset, new Cartesian3()), 0, -90, 0)
             break
           }
         }
@@ -133,32 +135,32 @@ export default {
       () => this.$store.getters['mission/waypointLLAs'], newValue => {
         let line = this.getById(this.missionLines, 'missionLine')
         if (line) {
-          line.positions = Cesium.Cartesian3.fromDegreesArray(newValue)
+          line.positions = Cartesian3.fromDegreesArray(newValue)
           // Explicitly render a new frame
           this.mainScene.requestRender()
         }
       }
     )
 
-    const startingCameraLocation = Cesium.Transforms.northEastDownToFixedFrame(
-      Cesium.Cartesian3.fromDegrees(
+    const startingCameraLocation = Transforms.northEastDownToFixedFrame(
+      Cartesian3.fromDegrees(
         148.08254681308492,
         -36.27293618323337,
         30000
       )
     )
-    const startingCameraOffset = new Cesium.Cartesian3(0, 0, 0)
-    this.setMainCamera(Cesium.Matrix4.multiplyByPoint(startingCameraLocation, startingCameraOffset, new Cesium.Cartesian3()))
+    const startingCameraOffset = new Cartesian3(0, 0, 0)
+    this.setMainCamera(Matrix4.multiplyByPoint(startingCameraLocation, startingCameraOffset, new Cartesian3()))
 
-    this.missionLines = this.mainViewer.scene.primitives.add(new Cesium.PolylineCollection())
+    this.missionLines = this.mainViewer.scene.primitives.add(new PolylineCollection())
 
     this.missionLines.add({
       id: 'missionLine',
       show: true,
       positions: this.$store.getters['mission/waypointLLAs'],
       width: 2,
-      material: Cesium.Material.fromType('Color', {
-        color: Cesium.Color.STEELBLUE,
+      material: Material.fromType('Color', {
+        color: Color.STEELBLUE,
       }),
     })
 
@@ -168,7 +170,7 @@ export default {
   beforeDestroy() {
     this.watcherWaypointsUnwatch()
     this.watcherEventUnwatch()
-    this.$store.unregisterModule('cesium')
+    this.$store.unregisterModule('cesiumStore')
   }
 }
 </script>

@@ -40,7 +40,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import CesiumComponent from '@/components/CesiumComponent'
-import { CesiumEvent, CesiumEventType } from '@/store/modules/cesium'
+import { CesiumEvent, CesiumEventType } from '@/store/modules/cesiumStore'
   export default {
     components: { CesiumComponent },
     data: () => ({
@@ -60,7 +60,7 @@ import { CesiumEvent, CesiumEventType } from '@/store/modules/cesium'
             longitude: waypoint.longitude
           }
         }
-        this.$store.commit('cesium/publishEvent', cesiumEvent)
+        this.$store.commit('cesiumStore/publishEvent', cesiumEvent)
       }
     },
     created () {
