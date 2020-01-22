@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
-import Index from '@/views/Index.vue'
+import Login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -9,12 +9,12 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: Index
+    component: () => import(/* webpackMode: "lazy" */ '@/views/Index.vue')
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackChunkName: "spa" */ '@/views/Login.vue')
+    component: Login
   },
   // otherwise redirect to home
   {

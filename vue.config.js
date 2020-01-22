@@ -81,18 +81,27 @@ module.exports = {
     optimization: {
       usedExports: true,
       splitChunks: {
-        minSize: 10000,
+        maxInitialRequests: Infinity,
+        minSize: 0,
         maxSize: 250000,
         cacheGroups: {
-          vendors: {
-            name: `chunk-vendors`,
+          vendor: {
             test: /[\\/]node_modules[\\/]/,
             priority: -10,
-            chunks: 'all'
+            chunks: 'all',
+            name(module) {
+              // get the name. E.g. node_modules/packageName/not/this/part.js
+              // or node_modules/packageName
+              const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+  
+              // npm package names are URL-safe, but some servers don't like @ symbols
+              return `yarn.${packageName.replace('@', '')}`;
+            }
           },
           commons: {
             name: 'Cesium',
             test: /[\\/]node_modules[\\/]cesium/,
+            priority: 10,
             chunks: 'all'
           }
         }
