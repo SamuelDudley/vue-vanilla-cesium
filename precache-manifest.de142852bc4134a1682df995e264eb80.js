@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "47fda7956d42f69be7f3",
+    "revision": "a130f554ba03545325fc",
     "url": "/vue-vanilla-cesium/app~d0ae3f07.bundle.js"
   },
   {
@@ -8,24 +8,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/css/Cesium~16c15fa4.d75e4e7a.css"
   },
   {
-    "revision": "47fda7956d42f69be7f3",
+    "revision": "a130f554ba03545325fc",
     "url": "/vue-vanilla-cesium/css/app~d0ae3f07.0e433876.css"
   },
   {
-    "revision": "e1ffe4375f540dbb17a4",
-    "url": "/vue-vanilla-cesium/css/chunk-vendors~11c2601a.8803134e.css"
+    "revision": "e5d2630dac82a04dd9f9",
+    "url": "/vue-vanilla-cesium/css/chunk-vendors~9c5b28f6.6e3f0361.css"
   },
   {
-    "revision": "eabd8781de60f15d1317",
-    "url": "/vue-vanilla-cesium/css/chunk-vendors~1c3a2c3f.8720841a.css"
+    "revision": "c77e2019e08d64471c35",
+    "url": "/vue-vanilla-cesium/css/chunk-vendors~faa7c04c.8720841a.css"
   },
   {
-    "revision": "b49366ba694760fb9812",
-    "url": "/vue-vanilla-cesium/css/chunk-vendors~78fc7647.340b80bc.css"
+    "revision": "62c13b2b5c9002094c54",
+    "url": "/vue-vanilla-cesium/css/yarn.vuetify~11c2601a.8803134e.css"
   },
   {
-    "revision": "202e22f936e07f804036",
-    "url": "/vue-vanilla-cesium/css/chunk-vendors~d939e436.6e3f0361.css"
+    "revision": "feea933638858f30401e",
+    "url": "/vue-vanilla-cesium/css/yarn.vuetify~78fc7647.340b80bc.css"
   },
   {
     "revision": "0509ab09c1b0d2200a4135803c91d6ce",
@@ -140,7 +140,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/fonts/roboto-latin-900italic.ebf6d164.woff2"
   },
   {
-    "revision": "f880bd0426649ae12ba9d2d2e56533b7",
+    "revision": "6886452cdd27079081868b8a7186ed2f",
     "url": "/vue-vanilla-cesium/index.html"
   },
   {
@@ -150,6 +150,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "38d2a6d2a8cc291e124e",
     "url": "/vue-vanilla-cesium/js/Cesium~079c89fc.1b174975.js"
+  },
+  {
+    "revision": "8208c25cb612e21976dc",
+    "url": "/vue-vanilla-cesium/js/Cesium~09d3628e.0e26a611.js"
+  },
+  {
+    "revision": "08039467ab4c62f5ee61",
+    "url": "/vue-vanilla-cesium/js/Cesium~0bb2f312.c601d8f0.js"
   },
   {
     "revision": "e3c5bf20f7967f84e1ad",
@@ -164,8 +172,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/js/Cesium~1056ba16.b3ea9f48.js"
   },
   {
-    "revision": "968d8198dee336bd6b0e",
-    "url": "/vue-vanilla-cesium/js/Cesium~14b2cf4b.2a9d1abd.js"
+    "revision": "a54425ba1cd8266e4cfe",
+    "url": "/vue-vanilla-cesium/js/Cesium~1299db6c.b0c1eb5b.js"
+  },
+  {
+    "revision": "6e0d701bc02150665fce",
+    "url": "/vue-vanilla-cesium/js/Cesium~14b2cf4b.c39afcd6.js"
   },
   {
     "revision": "56177ea3334543609385",
@@ -224,12 +236,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/js/Cesium~3a6f9a7d.7d282e0f.js"
   },
   {
-    "revision": "93f42459ac0887f2f733",
-    "url": "/vue-vanilla-cesium/js/Cesium~3b98e4aa.1b899937.js"
+    "revision": "5d1d0e91328395dd457b",
+    "url": "/vue-vanilla-cesium/js/Cesium~3b8009c6.061daeda.js"
   },
   {
-    "revision": "7cc2041c5a6055bfcd68",
-    "url": "/vue-vanilla-cesium/js/Cesium~3f32f5c7.24295a71.js"
+    "revision": "fd950ce3d1b1e39605ba",
+    "url": "/vue-vanilla-cesium/js/Cesium~3b98e4aa.bab30a47.js"
   },
   {
     "revision": "2b63c8ceb5d54ba5590f",
@@ -264,12 +276,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/js/Cesium~6283a018.dc7c9ac7.js"
   },
   {
-    "revision": "caf0c39e9d5733d75b95",
-    "url": "/vue-vanilla-cesium/js/Cesium~66537c81.b4965b3f.js"
+    "revision": "f2a5d7846ec4c1facb78",
+    "url": "/vue-vanilla-cesium/js/Cesium~66537c81.4883f845.js"
   },
   {
-    "revision": "30e89140a65ff344b638",
-    "url": "/vue-vanilla-cesium/js/Cesium~6b38fa05.32e30bb9.js"
+    "revision": "c6158d5c6a9245dcae09",
+    "url": "/vue-vanilla-cesium/js/Cesium~6b38fa05.4859294f.js"
   },
   {
     "revision": "672baa444a920b0cdd77",
@@ -288,8 +300,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/js/Cesium~7245f468.03cdc6a3.js"
   },
   {
-    "revision": "1e6a6ef2a257f3795670",
-    "url": "/vue-vanilla-cesium/js/Cesium~78c80789.dc73c6df.js"
+    "revision": "595e4ff2af1aaefb12e8",
+    "url": "/vue-vanilla-cesium/js/Cesium~78c80789.cc94fda9.js"
   },
   {
     "revision": "83cd78f4d56b5342167d",
@@ -302,6 +314,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "fa0674a0675384096baf",
     "url": "/vue-vanilla-cesium/js/Cesium~7dd8692c.5b098fd7.js"
+  },
+  {
+    "revision": "e0066f5307a6be78339a",
+    "url": "/vue-vanilla-cesium/js/Cesium~8329ad14.3cd29ad9.js"
   },
   {
     "revision": "fb730c0f88423f024381",
@@ -328,6 +344,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/js/Cesium~97f34270.bd1c21de.js"
   },
   {
+    "revision": "1ba00cb69125c263852d",
+    "url": "/vue-vanilla-cesium/js/Cesium~9bd045f2.764e3150.js"
+  },
+  {
     "revision": "63b4562b4cc2b42c414f",
     "url": "/vue-vanilla-cesium/js/Cesium~9d9b77a3.cc504fce.js"
   },
@@ -338,6 +358,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "377bfe3a190f3babe921",
     "url": "/vue-vanilla-cesium/js/Cesium~a57d3e3a.9c6501c0.js"
+  },
+  {
+    "revision": "a936062ad79cfc89039d",
+    "url": "/vue-vanilla-cesium/js/Cesium~a6002ffa.c11f049a.js"
   },
   {
     "revision": "50129545c65f4d15dd67",
@@ -364,12 +388,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/js/Cesium~b286205d.dbfd3af4.js"
   },
   {
+    "revision": "afcf4412d34bbaf07ee0",
+    "url": "/vue-vanilla-cesium/js/Cesium~b53e9b9e.22ea46b9.js"
+  },
+  {
     "revision": "30182f6747591be6b6a9",
     "url": "/vue-vanilla-cesium/js/Cesium~b958aea7.e1523b64.js"
   },
   {
-    "revision": "35b18ffed19296ee17c9",
-    "url": "/vue-vanilla-cesium/js/Cesium~b9dc3666.ba7c5714.js"
+    "revision": "1fe86b1acacdfdd3eb60",
+    "url": "/vue-vanilla-cesium/js/Cesium~b9dc3666.86d760e0.js"
   },
   {
     "revision": "fb425f51589bde089163",
@@ -382,6 +410,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "4fb02dbec569caa10a17",
     "url": "/vue-vanilla-cesium/js/Cesium~c8a7a074.e225bb0f.js"
+  },
+  {
+    "revision": "911f2885e8291d12b937",
+    "url": "/vue-vanilla-cesium/js/Cesium~ce75f8e4.357a8a8b.js"
   },
   {
     "revision": "3d039f56ac31db58b767",
@@ -408,6 +440,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/js/Cesium~e3e923d7.fea7b76a.js"
   },
   {
+    "revision": "d432e740f5476ce4116c",
+    "url": "/vue-vanilla-cesium/js/Cesium~e44777f7.385b3502.js"
+  },
+  {
     "revision": "7cdf029114dc8e213663",
     "url": "/vue-vanilla-cesium/js/Cesium~e49aeb6b.64b73563.js"
   },
@@ -428,8 +464,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/js/Cesium~ec264a4f.ed250823.js"
   },
   {
-    "revision": "acbd4ad394c89d5cd5fd",
-    "url": "/vue-vanilla-cesium/js/Cesium~ecc0699a.91c048ea.js"
+    "revision": "6fc6f1bd069972b999bb",
+    "url": "/vue-vanilla-cesium/js/Cesium~ecc0699a.12b75337.js"
+  },
+  {
+    "revision": "4d9a6241f70d884845ba",
+    "url": "/vue-vanilla-cesium/js/Cesium~ee1f2ea2.b5336445.js"
   },
   {
     "revision": "743182b0717615069e65",
@@ -444,44 +484,60 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-vanilla-cesium/js/Cesium~fa5071d0.8548d045.js"
   },
   {
-    "revision": "cc31b71fe88974de13b5",
-    "url": "/vue-vanilla-cesium/js/chunk-782c1938.7605ecea.js"
+    "revision": "1bbb99c9bc5aab1eca14",
+    "url": "/vue-vanilla-cesium/js/chunk-14c8da52.4f3e84da.js"
   },
   {
-    "revision": "e1ffe4375f540dbb17a4",
-    "url": "/vue-vanilla-cesium/js/chunk-vendors~11c2601a.1efb7b58.js"
+    "revision": "4aee1561e3d3f4c75f9f",
+    "url": "/vue-vanilla-cesium/js/chunk-vendors~06e90eef.5e81de6d.js"
   },
   {
-    "revision": "eabd8781de60f15d1317",
-    "url": "/vue-vanilla-cesium/js/chunk-vendors~1c3a2c3f.2f86f5a3.js"
+    "revision": "2e060d88b15fcaff1c2d",
+    "url": "/vue-vanilla-cesium/js/chunk-vendors~32b403ab.628a55b2.js"
   },
   {
-    "revision": "77a13d52c30d654191b0",
-    "url": "/vue-vanilla-cesium/js/chunk-vendors~253ae210.aead1950.js"
+    "revision": "e5d2630dac82a04dd9f9",
+    "url": "/vue-vanilla-cesium/js/chunk-vendors~9c5b28f6.fc980ac1.js"
   },
   {
-    "revision": "d2196debe7222240c7ad",
-    "url": "/vue-vanilla-cesium/js/chunk-vendors~4a7e9e0b.792d9a5f.js"
-  },
-  {
-    "revision": "b49366ba694760fb9812",
-    "url": "/vue-vanilla-cesium/js/chunk-vendors~78fc7647.8b8f9d2a.js"
-  },
-  {
-    "revision": "c88af16a3b42436f50c9",
-    "url": "/vue-vanilla-cesium/js/chunk-vendors~ce053847.a66d8479.js"
+    "revision": "8900b9d5ae8b30fca439",
+    "url": "/vue-vanilla-cesium/js/chunk-vendors~b1f96ece.2c596e7a.js"
   },
   {
     "revision": "69de6bc5223c893b1336",
     "url": "/vue-vanilla-cesium/js/chunk-vendors~d2305125.54ac4d94.js"
   },
   {
-    "revision": "202e22f936e07f804036",
-    "url": "/vue-vanilla-cesium/js/chunk-vendors~d939e436.94b49afb.js"
+    "revision": "c77e2019e08d64471c35",
+    "url": "/vue-vanilla-cesium/js/chunk-vendors~faa7c04c.1f8e915d.js"
   },
   {
-    "revision": "ae3e4901eab264565b08",
-    "url": "/vue-vanilla-cesium/js/chunk-vendors~fdc6512a.d40e12e1.js"
+    "revision": "fde723d5623cd9a5e9ad",
+    "url": "/vue-vanilla-cesium/js/chunk-vendors~fdc6512a.57f4badd.js"
+  },
+  {
+    "revision": "84bfd7a55977ef0743af",
+    "url": "/vue-vanilla-cesium/js/yarn.babel~f269b12e.9e52123e.js"
+  },
+  {
+    "revision": "931bbd3c70eb7afffb62",
+    "url": "/vue-vanilla-cesium/js/yarn.core-js~987e6011.7c53446f.js"
+  },
+  {
+    "revision": "62c13b2b5c9002094c54",
+    "url": "/vue-vanilla-cesium/js/yarn.vuetify~11c2601a.1439a991.js"
+  },
+  {
+    "revision": "d038ac88306502e50f42",
+    "url": "/vue-vanilla-cesium/js/yarn.vuetify~78934547.728d1e0b.js"
+  },
+  {
+    "revision": "feea933638858f30401e",
+    "url": "/vue-vanilla-cesium/js/yarn.vuetify~78fc7647.f18b2026.js"
+  },
+  {
+    "revision": "2a39a7906d5a760afce0",
+    "url": "/vue-vanilla-cesium/js/yarn.vuetify~ce053847.351eba30.js"
   },
   {
     "revision": "f5c5b0a0106ef50f70cef84f9288cb9c",

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/vue-vanilla-cesium/precache-manifest.6e2b14a0a4e5563490d3aaa4bdeeb79e.js"
+  "/vue-vanilla-cesium/precache-manifest.de142852bc4134a1682df995e264eb80.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vue-vanilla-cesium"});
