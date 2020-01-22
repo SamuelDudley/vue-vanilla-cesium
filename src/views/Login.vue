@@ -30,7 +30,6 @@
                   prepend-icon="person"
                   type="text"
                 />
-
                 <v-text-field
                   v-model="password"
                   label="Password"
